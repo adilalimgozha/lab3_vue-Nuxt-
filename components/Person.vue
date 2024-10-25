@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
     id: Number,
@@ -12,10 +13,31 @@ const props = defineProps({
     today: Date,
     perses: Array,
     filterDecision: Function,
+    Age: Number,
+    Location: String,
+    persons: Array,
 })
+
+const router = useRouter()
 
 // Увеличение рейтинга
 const rate = ref(props.Rating)
+
+const personsString = JSON.stringify(props.persons);
+
+function to_details(userId) {
+    router.push({
+    path: `/profile/${userId}`,
+    query: {
+        PersonName: props.PersonName,
+        Age: props.Age,
+        Location: props.Location,
+        Avatar: props.Avatar,
+        Rating: rate.value,
+        persons: personsString,
+    }
+  })
+}
 
 // Function to increase the rating
 function liked() {
@@ -28,36 +50,45 @@ function liked() {
   }
 }
 
-// Написание текста о дате в зависимости от разницы с сегодняшней датой
-const pub_date = ref("")
+const pub_date = ref("");
 
-const day = ref(props.PubDate.getDate())
-const month = ref(props.PubDate.getMonth())
-const year = ref(props.PubDate.getFullYear())
-const hours = ref(props.PubDate.getHours())
-const minutes = ref(props.PubDate.getMinutes())
+// Преобразование строк в объекты Date
+const pubDate = new Date(props.PubDate);
+const todayDate = new Date(props.today);
 
-const todayDay = ref(props.today.getDate())
-const todayMonth = ref(props.today.getMonth() + 1)
-const todayYear = ref(props.PubDate.getFullYear())
+// Получение компонентов даты
+const day = pubDate.getDate();
+const month = pubDate.getMonth(); // Январь - 0, Декабрь - 11
+const year = pubDate.getFullYear();
+const hours = pubDate.getHours();
+const minutes = pubDate.getMinutes();
 
-if (day.value == todayDay.value && month.value == todayMonth.value && year.value == todayYear.value) {
-    pub_date.value = `Today, ${hours.value}:${minutes.value}`
-} else if ((day.value + 1 == todayDay.value && month.value == todayMonth.value && year.value == todayYear.value)) {
-    pub_date.value = `Yesterday, ${hours.value}:${minutes.value}`
+// Получение текущих компонентов даты
+const todayDay = todayDate.getDate();
+const todayMonth = todayDate.getMonth(); // Январь - 0, Декабрь - 11
+const todayYear = todayDate.getFullYear();
+
+// Форматирование строки даты
+if (day === todayDay && month === todayMonth && year === todayYear) {
+    pub_date.value = `Today, ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+} else if (day === todayDay - 1 && month === todayMonth && year === todayYear) {
+    pub_date.value = `Yesterday, ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 } else {
-    for (let i = 1; i <= 12; i++) {
-        if (todayMonth.value == month.value + i){
-            pub_date.value = `${i} month(s) ago, ${hours.value}:${minutes.value}`
-            break
-        }
-        for (let j = 2; j <= 30; j++) {
-            if (todayDay.value == day.value + j) {
-                pub_date.value = `${j-1} day(s) ago, ${hours.value}:${minutes.value}`
-            }
+    const monthDiff = todayMonth - month + (todayYear - year) * 12;
+
+    if (monthDiff > 0 && monthDiff <= 12) {
+        pub_date.value = `${monthDiff} month(s) ago, ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+    } else {
+        const dayDiff = todayDay - day + (todayMonth === month ? 0 : (new Date(todayYear, todayMonth, 0).getDate() - day));
+        
+        if (dayDiff > 0) {
+            pub_date.value = `${dayDiff} day(s) ago, ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        } else {
+            pub_date.value = `On ${day}/${month + 1}/${year}, ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
         }
     }
 }
+
 
 
 </script>
@@ -67,7 +98,7 @@ if (day.value == todayDay.value && month.value == todayMonth.value && year.value
     <div class="card">
         <div class="card-top">
             <div class="info">
-                <div class="name">{{ PersonName }}</div>
+                <NuxtLink @click="to_details(id)" :to="`/profile/${id}`"><div class="name" >{{ PersonName }}</div></NuxtLink>
                 <div class="date">{{ pub_date }}</div>
             </div>
 

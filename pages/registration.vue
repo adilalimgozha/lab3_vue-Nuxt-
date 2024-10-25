@@ -1,13 +1,16 @@
 <template>
     <div>
         <Header :menuBarOpen="menuBarOpen"></Header> 
-        <RegistrationForm></RegistrationForm>
+        <RegistrationForm :confirmation="comfirmation"></RegistrationForm>
     </div>
 </template>
 
 <script setup>
 import Header from '~/components/Header.vue';
 import RegistrationForm from '~/components/RegistrationForm.vue';
+import { ref } from 'vue';
+
+const comfirmation = ref(false)
 
 </script>
 

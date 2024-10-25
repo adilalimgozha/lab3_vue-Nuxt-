@@ -10,6 +10,8 @@ import _ from 'lodash';
 
 const persons = ref([
         { id: 1,
+        Age: 32,
+        Location: "Almaty, KZ",
         PersonName: "Mark Twen",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 8, 19, 14, 30),
@@ -17,6 +19,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 2,
+        Age: 32,
+        Location: "Almaty, KZ",
         PersonName: "Peter Parker",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 19, 11, 30),
@@ -24,6 +28,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 3,
+        Age: 32,
+        Location: "Almaty, KZ",
         PersonName: "Max Max",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 19, 12, 30),
@@ -31,6 +37,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 4,
+        Age: 32,
+        Location: "Almaty, KZ",
         PersonName: "Suna Suna",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 19, 13, 30),
@@ -38,6 +46,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 5,
+        Age: 32,
+        Location: "Almaty, KZ",
         PersonName: "Bror Bror",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 14, 40),
@@ -45,6 +55,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 6,
+        Age: 32,
+        Location: "Almaty, KZ",
         PersonName: "Robert Robert",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 15, 40),
@@ -52,6 +64,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 7,
+        Age: 32,
+        Location: "Almaty, KZ",
         PersonName: "Alish Alish",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 16, 40),
@@ -59,6 +73,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 8,
+        Age: 34,
+        Location: "Almaty, KZ",
         PersonName: "Annie Annie",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 17, 40),
@@ -66,6 +82,8 @@ const persons = ref([
         Commentary: "Modern",
         Topic: "Modern" },
         { id: 9,
+            Age: 34,
+            Location: "Almaty, KZ",
         PersonName: "Erke Erke",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 18, 40),
@@ -73,6 +91,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 10,
+            Age: 34,
+            Location: "Almaty, KZ",
         PersonName: "Ali Ali",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 19, 40),
@@ -80,6 +100,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 11,
+            Age: 34,
+            Location: "Almaty, KZ",
         PersonName: "Nurik Nurik",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 20, 40),
@@ -87,6 +109,8 @@ const persons = ref([
         Commentary: "Education",
         Topic: "Education" },
         { id: 12,
+            Age: 34,
+            Location: "Almaty, KZ",
         PersonName: "Adil Adil",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 21, 40),
@@ -94,6 +118,8 @@ const persons = ref([
         Commentary: "Fasion",
         Topic: "Fashion" },
         { id: 13,
+            Age: 34,
+            Location: "Almaty, KZ",
         PersonName: "Ulan Ulan",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 22, 40),
@@ -101,6 +127,8 @@ const persons = ref([
         Commentary: "Fashion",
         Topic: "Fashion" },
         { id: 14,
+            Age: 34,
+            Location: "Almaty, KZ",
         PersonName: "Kirill Kirill",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 23, 40),
@@ -108,6 +136,8 @@ const persons = ref([
         Commentary: "Fashion",
         Topic: "Fashion" },
         { id: 15,
+            Age: 34,
+            Location: "Almaty, KZ",
         PersonName: "Nikita Nikita",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 11, 10),
@@ -115,6 +145,8 @@ const persons = ref([
         Commentary: "Modern",
         Topic: "Modern" },
         { id: 16,
+            Age: 34,
+            Location: "Almaty, KZ",
         PersonName: "Zhasik Zhasik",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 12, 10),
@@ -122,6 +154,8 @@ const persons = ref([
         Commentary: "Fashion",
         Topic: "Fashion" },
         { id: 17,
+            Age: 34,
+            Location: "Almaty, KZ",
         PersonName: "Tima Tima",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 17, 13, 10),
@@ -129,6 +163,8 @@ const persons = ref([
         Commentary: "Modern",
         Topic: "Modern" },
         { id: 18,
+            Age: 25,
+            Location: "Almaty, KZ",
         PersonName: "Saba Saba",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 18, 14, 10),
@@ -136,6 +172,8 @@ const persons = ref([
         Commentary: "Education",
         Topic: "Education" },
         { id: 19,
+            Age: 25,
+            Location: "Almaty, KZ",
         PersonName: "Damir Damir",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 18, 15, 10),
@@ -143,6 +181,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 20,
+            Age: 25,
+            Location: "Almaty, KZ",
         PersonName: "Dima Dima",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 18, 16, 10),
@@ -150,6 +190,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 21,
+            Age: 25,
+            Location: "Almaty, KZ",
         PersonName: "Alen Alen",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 16, 17, 10),
@@ -157,6 +199,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 22,
+            Age: 25,
+            Location: "Almaty, KZ",
         PersonName: "Madina Madina",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 16, 21, 10),
@@ -164,6 +208,8 @@ const persons = ref([
         Commentary: "Education",
         Topic: "Education" },
         { id: 23,
+            Age: 25,
+            Location: "Almaty, KZ",
         PersonName: "Alex Alex",
         Avatar: "ava1.png",
         PubDate: new Date(2024, 9, 16, 15, 45),
@@ -335,17 +381,21 @@ const sortedByDate = computed(() => _.sortBy(perses.value, 'PubDate').reverse())
 
             <div v-if="page <= maxPage" class="grid-container">
                 <Person v-for="el in perses.slice((page-1) * 4, page * 4)" 
-                :key="el.id" 
-                :id="el.id" 
-                :PersonName="el.PersonName"
-                :Avatar="el.Avatar"
-                :PubDate="el.PubDate"
-                :Rating="el.Rating"
-                :Commentary="el.Commentary"
-                :Topic="el.Topic"
-                :today="today"
-                :perses="perses"
-                :filterDecision="filterDecision"></Person>
+                    :key="el.id" 
+                    :id="el.id"
+                    :Age="el.Age"
+                    :Location="el.Location"
+                    :PersonName="el.PersonName"
+                    :Avatar="el.Avatar"
+                    :PubDate="el.PubDate"
+                    :Rating="el.Rating"
+                    :Commentary="el.Commentary"
+                    :Topic="el.Topic"
+                    :today="today"
+                    :perses="perses"
+                    :filterDecision="filterDecision"
+                    :persons="persons"
+                    ></Person>
 
             </div>
         </div>

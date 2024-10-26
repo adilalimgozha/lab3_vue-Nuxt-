@@ -87,14 +87,5 @@ export const useUsersStore = defineStore('users', {
         }
       }
     },
-    deletePost(postId) {
-      // Найти индекс поста в массиве posts
-      const postIndex = this.posts.findIndex(post => post.id === postId);
-
-      if (postIndex !== -1) {
-        // Удалить пост из массива
-        this.posts.splice(postIndex, 1);
-      }
-    },
   }
 })

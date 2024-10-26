@@ -1,6 +1,6 @@
 <template>
 <Header :menuBarOpen="menuBarOpen"></Header> 
-<ProfileComp :isMyProfile="isMyProfile" :PersonName="PersonName" :Age="Age" :Location="Location" :Avatar="Avatar" :Rating="Rating" :persons="persons"></ProfileComp>
+<ProfileComp :isMyProfile="isMyProfile" :PersonName="PersonName" :Age="Age" :Location="Location" :Avatar="Avatar" :Rating="Rating" :posts="posts"></ProfileComp>
 
 </template>
 
@@ -19,15 +19,15 @@ const Location = route.query.Location
 const Avatar = route.query.Avatar
 const Rating = route.query.Rating ? Number(route.query.Rating) : 0;
 
-const personsQuery = route.query.persons;
+const postsQuery = route.query.posts;
 
-let persons = [];
-if (personsQuery) {
+let posts = [];
+if (postsQuery) {
     try {
         // Only parse if it's a string and valid
-        persons = JSON.parse(personsQuery);
+        posts = JSON.parse(postsQuery);
     } catch (e) {
-        console.error("Failed to parse persons:", e);
+        console.error("Failed to parse posts:", e);
     }
 }
 

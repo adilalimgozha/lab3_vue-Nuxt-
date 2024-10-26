@@ -4,18 +4,18 @@
 
     const props = defineProps({
         menuBarOpen: Function,
-        persons: Array,
+        posts: Array,
     })
 
     const router = useRouter()
 
-    const personsString = JSON.stringify(props.persons);
+    const postsString = JSON.stringify(props.posts);
 
     function to_profile() {
         router.push({
         path: `/myprofile`,
         query: {
-            persons: personsString,
+            posts: postsString,
         }
     })
     }

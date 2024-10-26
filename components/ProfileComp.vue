@@ -82,7 +82,7 @@
                     :today="today"
                     :perses="perses"
                     :filterDecision="filterDecision"
-                    :persons="persons"
+                    :posts="posts"
                     :posts_page="posts_page"
                     :isMyProfile="isMyProfile"
                     :post_id="post_id"
@@ -105,7 +105,7 @@ const props = defineProps({
     Location: String,
     Avatar: String,
     Rating: Number,
-    persons: Array,
+    posts: Array,
     post_id: Number,
   })
 
@@ -137,9 +137,9 @@ const submitFormInfo = () => {
 
 const page = ref(1)
 
-console.log(props.persons[0])
+console.log(props.posts[0])
 
-const perses = ref(props.persons.filter(pers => pers.PersonName === props.PersonName))
+const perses = ref(props.posts.filter(pers => pers.PersonName === props.PersonName))
 console.log(perses.value)
 
 const maxPage = ref(Math.ceil(perses.value.length / 4))

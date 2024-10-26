@@ -1,6 +1,6 @@
 <template>
     <Header :menuBarOpen="menuBarOpen"></Header> 
-    <ProfileComp :isMyProfile="isMyProfile" :PersonName="PersonName" :Age="Age" :Location="Location" :Avatar="Avatar" :Rating="Rating" :persons="persons"></ProfileComp>
+    <ProfileComp :isMyProfile="isMyProfile" :PersonName="PersonName" :Age="Age" :Location="Location" :Avatar="Avatar" :Rating="Rating" :posts="posts"></ProfileComp>
     
     </template>
     
@@ -36,15 +36,15 @@
 
     console.log("this user: ", user, Age, Location)
     
-    const personsQuery = route.query.persons;
+    const postsQuery = route.query.posts;
     
-    let persons = [];
-    if (personsQuery) {
+    let posts = [];
+    if (postsQuery) {
         try {
             // Only parse if it's a string and valid
-            persons = JSON.parse(personsQuery);
+            posts = JSON.parse(postsQuery);
         } catch (e) {
-            console.error("Failed to parse persons:", e);
+            console.error("Failed to parse posts:", e);
         }
     }
     

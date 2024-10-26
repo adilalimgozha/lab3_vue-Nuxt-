@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router'
 import { useUsersStore } from '~/store/users';
+import { usePostsStore } from '~/store/posts';
 
 const props = defineProps({
     id: Number,
@@ -16,24 +17,23 @@ const props = defineProps({
     filterDecision: Function,
     Age: Number,
     Location: String,
-    persons: Array,
+    posts: Array,
     posts_page: Boolean,
-    isMyProfile: Boolean,
-    post_id: Number
+    isMyProfile: Boolean
 })
 
 const posts_page = ref(props.posts_page)
 
-const userStore = useUsersStore()
+const postsStore = usePostsStore()
 
-const post_id = ref(props.post_id)
+const user_id = ref(postsStore.findUserIdByPostId(props.id))
 
 const router = useRouter()
 
 // Увеличение рейтинга
 const rate = ref(props.Rating)
 
-const personsString = JSON.stringify(props.persons);
+const postsString = JSON.stringify(props.posts);
 
 function to_details(userId) {
     router.push({
@@ -44,7 +44,7 @@ function to_details(userId) {
         Location: props.Location,
         Avatar: props.Avatar,
         Rating: rate.value,
-        persons: personsString,
+        posts: postsString,
     }
   })
 }
@@ -114,7 +114,7 @@ if (day === todayDay && month === todayMonth && year === todayYear) {
     <div class="card">
         <div class="card-top">
             <div class="info">
-                <NuxtLink @click="to_details(id)" :to="`/profile/${id}`"><div class="name" >{{ PersonName }}</div></NuxtLink>
+                <NuxtLink @click="to_details(user_id)" :to="`/profile/${user_id}`"><div class="name" >{{ PersonName }}</div></NuxtLink>
                 <div class="date">{{ pub_date }}</div>
             </div>
 
@@ -153,7 +153,7 @@ if (day === todayDay && month === todayMonth && year === todayYear) {
             <button class="like" @click="liked(), filterDecision()">Like</button>
         </div>
         <div v-if="isMyProfile==true" class="btn">
-            <button class="like delete" @click="del_post(post_id)">Delete</button>
+            <button class="like delete" @click="del_post(id)">Delete</button>
         </div>
 
     </div>

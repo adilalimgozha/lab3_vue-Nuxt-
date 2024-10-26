@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div v-else>
-                            <form action="">
+                            <form  @submit.prevent="submitFormInfo">
                                 <div>
                                     <label for="age">Age</label>
                                     <input class="input" type="text" v-model="Age" name="age" id="age">
@@ -24,6 +24,7 @@
                                 
 
                                 <input class="input" type="text" v-model="Location" name="loc" id="age">
+                                <button type="submit" class="follow-btn">Save</button>
                             </form>
                         </div>
 
@@ -33,7 +34,6 @@
                 <button v-if="isMyProfile==false" class="follow-btn">Follow</button>
                 <div v-else>
                     <button class="follow-btn">Statistic</button>
-                    <button class="follow-btn">Save</button>
                 </div>
             </div>
 
@@ -83,6 +83,9 @@
                     :perses="perses"
                     :filterDecision="filterDecision"
                     :persons="persons"
+                    :posts_page="posts_page"
+                    :isMyProfile="isMyProfile"
+                    :post_id="post_id"
                     ></Person>
 
             </div>
@@ -93,6 +96,7 @@
 <script setup>
 import Person from './Person.vue';
 import { ref } from 'vue';
+import { useUsersStore } from '~/store/users';
 
 const props = defineProps({
     isMyProfile: Boolean,
@@ -102,11 +106,34 @@ const props = defineProps({
     Avatar: String,
     Rating: Number,
     persons: Array,
+    post_id: Number,
   })
+
+const posts_page = ref(false)
 
 const isMyProfile = ref(props.isMyProfile)
 const Age = ref(props.Age); // Reactive variable for Age
 const Location = ref(props.Location);
+const post_id = ref(props.post_id);
+
+
+
+
+// Get the store
+const usersStore = useUsersStore();
+
+
+// Method to handle form submission
+const submitFormInfo = () => {
+  usersStore.updateUser({
+    Age: parseInt(Age.value),
+    Location: Location.value,
+  });
+
+  console.log(usersStore.$state.users)
+};
+
+
 
 const page = ref(1)
 

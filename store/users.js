@@ -72,6 +72,29 @@ export const useUsersStore = defineStore('users', {
 
     addUsers(persons) {
       this.users.push(...persons);
-    }
+    },
+    // Update the user's profile data
+    updateUser(updatedData) {
+      if (this.user) {
+        // Find the current user in the `users` array by username
+        const userIndex = this.users.findIndex(u => u.username === this.user.username);
+        if (userIndex !== -1) {
+          // Update the user in the users array
+          this.users[userIndex] = { ...this.users[userIndex], ...updatedData };
+
+          // Also update the current authenticated user in the store
+          this.user = { ...this.user, ...updatedData };
+        }
+      }
+    },
+    deletePost(postId) {
+      // Найти индекс поста в массиве posts
+      const postIndex = this.posts.findIndex(post => post.id === postId);
+
+      if (postIndex !== -1) {
+        // Удалить пост из массива
+        this.posts.splice(postIndex, 1);
+      }
+    },
   }
 })

@@ -16,6 +16,7 @@ const persons = ref([
         { id: 1,
         username: "Mark Twen",
         password: "q",
+        post_id:1,
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Mark Twen",
@@ -28,6 +29,7 @@ const persons = ref([
             username: "Peter Parker",
             password: "q",
             password: "q",
+            post_id:2,
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Peter Parker",
@@ -39,6 +41,7 @@ const persons = ref([
         { id: 3,
             username: "Max Max",
             password: "q",
+            post_id:3,
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Max Max",
@@ -50,6 +53,7 @@ const persons = ref([
         { id: 4,
             username: "Suna Suna",
             password: "q",
+            post_id:4,
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Suna Suna",
@@ -61,6 +65,7 @@ const persons = ref([
         { id: 5,
             username: "Bror Bror",
             password: "q",
+            post_id:5,
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Bror Bror",
@@ -72,6 +77,7 @@ const persons = ref([
         { id: 6,
             username: "Robert Robert",
             password: "q",
+            post_id:6,
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Robert Robert",
@@ -83,6 +89,7 @@ const persons = ref([
         { id: 7,
             username: "Alish Alish",
             password: "q",
+            post_id:7,
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Alish Alish",
@@ -94,6 +101,7 @@ const persons = ref([
         { id: 8,
             username: "Annie Annie",
             password: "q",
+            post_id:8,
         Age: 34,
         Location: "Almaty, KZ",
         PersonName: "Annie Annie",
@@ -105,6 +113,7 @@ const persons = ref([
         { id: 9,
             username: "Erke Erke",
             password: "q",
+            post_id:9,
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Erke Erke",
@@ -116,6 +125,7 @@ const persons = ref([
         { id: 10,
             username: "Ali Ali",
             password: "q",
+            post_id:10,
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Ali Ali",
@@ -127,6 +137,7 @@ const persons = ref([
         { id: 11,
             username: "Nurik Nurik",
             password: "q",
+            post_id:11,
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Nurik Nurik",
@@ -138,6 +149,7 @@ const persons = ref([
         { id: 12,
             username: "Adil Adil",
             password: "q",
+            post_id:12,
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Adil Adil",
@@ -149,6 +161,7 @@ const persons = ref([
         { id: 13,
             username: "Ulan Ulan",
             password: "q",
+            post_id:13,
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Ulan Ulan",
@@ -160,6 +173,7 @@ const persons = ref([
         { id: 14,
             username: "Kirill Kirill",
             password: "q",
+            post_id:14,
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Kirill Kirill",
@@ -171,6 +185,7 @@ const persons = ref([
         { id: 15,
             username: "Nikita Nikita",
             password: "q",
+            post_id:15,
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Nikita Nikita",
@@ -182,6 +197,7 @@ const persons = ref([
         { id: 16,
             username: "Zhasik Zhasik",
             password: "q",
+            post_id:16,
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Zhasik Zhasik",
@@ -193,6 +209,7 @@ const persons = ref([
         { id: 17,
             username: "Tima Tima",
             password: "q",
+            post_id:17,
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Tima Tima",
@@ -204,6 +221,7 @@ const persons = ref([
         { id: 18,
             username: "Saba Saba",
             password: "q",
+            post_id:18,
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Saba Saba",
@@ -215,6 +233,7 @@ const persons = ref([
         { id: 19,
             username: "Damir Damir",
             password: "q",
+            post_id:19,
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Damir Damir",
@@ -226,6 +245,7 @@ const persons = ref([
         { id: 20,
             username: "Dima Dima",
             password: "q",
+            post_id:20,
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Dima Dima",
@@ -237,6 +257,7 @@ const persons = ref([
         { id: 21,
             username: "Alen Alen",
             password: "q",
+            post_id:21,
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Alen Alen",
@@ -248,6 +269,7 @@ const persons = ref([
         { id: 22,
             username: "Madina Madina",
             password: "q",
+            post_id:22,
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Madina Madina",
@@ -259,6 +281,7 @@ const persons = ref([
         { id: 23,
             username: "Alex Alex",
             password: "q",
+            post_id:23,
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Alex Alex",
@@ -266,10 +289,29 @@ const persons = ref([
         PubDate: new Date(2024, 9, 16, 15, 45),
         Rating: 6,
         Commentary: "Modern",
-        Topic: "Modern" }
+        Topic: "Modern" },
+        /*{ id: 12,
+            username: "Adil Adil",
+            password: "q",
+            post_id:24,
+            Age: 34,
+            Location: "Almaty, KZ",
+        PersonName: "Adil Adil",
+        Avatar: "ava1.png",
+        PubDate: new Date(2024, 9, 17, 21, 40),
+        Rating: 6,
+        Commentary: "Adventure",
+        Topic: "Adventure" },*/
     ]);
 
-usersStore.addUsers(persons.value);
+if (usersStore.$state.users.length == 0){
+    usersStore.addUsers(persons.value);
+}
+console.log("ALLLL USERS", usersStore.$state.users)
+
+persons.value = usersStore.$state.users
+
+const posts_page = ref(true)
 
 // Нынешняя дата
 const today = ref(new Date());
@@ -466,6 +508,7 @@ const handleLoginSuccess = () => {
                     :perses="perses"
                     :filterDecision="filterDecision"
                     :persons="persons"
+                    :posts_page="posts_page"
                     ></Person>
 
             </div>

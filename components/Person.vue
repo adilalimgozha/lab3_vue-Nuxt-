@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router'
+import { useUsersStore } from '~/store/users';
 
 const props = defineProps({
     id: Number,
@@ -16,7 +17,16 @@ const props = defineProps({
     Age: Number,
     Location: String,
     persons: Array,
+    posts_page: Boolean,
+    isMyProfile: Boolean,
+    post_id: Number
 })
+
+const posts_page = ref(props.posts_page)
+
+const userStore = useUsersStore()
+
+const post_id = ref(props.post_id)
 
 const router = useRouter()
 
@@ -48,6 +58,12 @@ function liked() {
     rate.value += 1
     person.Rating = rate.value
   }
+}
+
+
+
+function del_post(id) {
+    postsStore.deletePost(id);
 }
 
 const pub_date = ref("");
@@ -133,8 +149,11 @@ if (day === todayDay && month === todayMonth && year === todayYear) {
 
         <div>{{ Commentary }}</div>
 
-        <div class="btn">
+        <div v-if="posts_page==true" class="btn">
             <button class="like" @click="liked(), filterDecision()">Like</button>
+        </div>
+        <div v-if="isMyProfile==true" class="btn">
+            <button class="like delete" @click="del_post(post_id)">Delete</button>
         </div>
 
     </div>
@@ -220,6 +239,14 @@ if (day === todayDay && month === todayMonth && year === todayYear) {
     .star{
         margin: 0 0.3em;
         width: 1.2em;
+    }
+
+    .delete{
+        background-color: red;
+    }
+
+    .delete:hover{
+        background-color: rgb(148, 21, 21);
     }
 
 </style>

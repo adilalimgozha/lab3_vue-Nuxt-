@@ -1,6 +1,6 @@
 <template>
 <Header :menuBarOpen="menuBarOpen"></Header> 
-<ProfileComp :PersonName="PersonName" :Age="Age" :Location="Location" :Avatar="Avatar" :Rating="Rating" :persons="persons"></ProfileComp>
+<ProfileComp :isMyProfile="isMyProfile" :PersonName="PersonName" :Age="Age" :Location="Location" :Avatar="Avatar" :Rating="Rating" :persons="persons"></ProfileComp>
 
 </template>
 
@@ -9,6 +9,8 @@
 import ProfileComp from '~/components/ProfileComp.vue'
 import { useRoute } from 'vue-router'
 import Menu from '~/components/Menu.vue';
+
+const isMyProfile = ref(false)
 
 const route = useRoute()
 const PersonName = route.query.PersonName || 'Unknown User'

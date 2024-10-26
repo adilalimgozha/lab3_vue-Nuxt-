@@ -7,12 +7,34 @@
                     <img :src="(`/assets/${Avatar}`)" alt="avatar" class="avatar">
                     <div class="info">
                         <div class="inf name">{{ PersonName }}</div>
-                        <div class="inf">Age: {{ Age }}</div>
-                        <div class="inf">{{ Location }}</div>
+                        <div v-if="isMyProfile==false">
+                            <div class="inf">
+                                Age: {{ Age }}
+                            </div>
+                            <div class="inf">
+                                {{ Location }}
+                            </div>
+                        </div>
+                        <div v-else>
+                            <form action="">
+                                <div>
+                                    <label for="age">Age</label>
+                                    <input class="input" type="text" v-model="Age" name="age" id="age">
+                                </div>
+                                
+
+                                <input class="input" type="text" v-model="Location" name="loc" id="age">
+                            </form>
+                        </div>
+
                     </div>
                 </div>
 
-                <button class="follow-btn">Follow</button>
+                <button v-if="isMyProfile==false" class="follow-btn">Follow</button>
+                <div v-else>
+                    <button class="follow-btn">Statistic</button>
+                    <button class="follow-btn">Save</button>
+                </div>
             </div>
 
             <div class="rating">
@@ -70,8 +92,10 @@
   
 <script setup>
 import Person from './Person.vue';
+import { ref } from 'vue';
 
 const props = defineProps({
+    isMyProfile: Boolean,
     PersonName: String,
     Age: Number,
     Location: String,
@@ -79,6 +103,10 @@ const props = defineProps({
     Rating: Number,
     persons: Array,
   })
+
+const isMyProfile = ref(props.isMyProfile)
+const Age = ref(props.Age); // Reactive variable for Age
+const Location = ref(props.Location);
 
 const page = ref(1)
 
@@ -213,5 +241,12 @@ function prevPage(){
     margin: 0 5em;
 }
 
+.input{
+    display: inline-block;
+    background: #45D2FF;
+    border:none;
+    font-size: 0.6em;
+    padding: 0.3em 0.3em;
+}
 
 </style>

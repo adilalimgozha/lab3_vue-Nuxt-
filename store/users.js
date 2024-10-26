@@ -13,6 +13,9 @@ export const useUsersStore = defineStore('users', {
     },
     isUserAuthenticated(state) {
       return state.isAuthenticated
+    },
+    getUserByPersonName: (state) => (username) => {
+      return state.users.find(user => user.username === username);
     }
   },
   actions: {
@@ -65,6 +68,10 @@ export const useUsersStore = defineStore('users', {
     logout() {
       this.user = null
       this.isAuthenticated = false
+    },
+
+    addUsers(persons) {
+      this.users.push(...persons);
     }
   }
 })

@@ -1,9 +1,24 @@
 <script setup>
     import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
 
     const props = defineProps({
-        menuBarOpen: Function
+        menuBarOpen: Function,
+        persons: Array,
     })
+
+    const router = useRouter()
+
+    const personsString = JSON.stringify(props.persons);
+
+    function to_profile() {
+        router.push({
+        path: `/myprofile`,
+        query: {
+            persons: personsString,
+        }
+    })
+    }
 
     const profile_clicked = ref(false)
 
@@ -22,6 +37,17 @@
         usersStore.logout()
     }
 
+    import { defineEmits } from 'vue';
+
+    const emit = defineEmits();
+
+    const loginclicked = ref(false)
+    const isClicked = () => {
+        loginclicked.value = !loginclicked.value
+        click_profile()
+        emit('isClicked', loginclicked.value);
+    }
+
 </script>
 
 <template>
@@ -33,11 +59,12 @@
         <button class="profile" @click="click_profile()"><img class="profile-img" src="/assets/profile.png" alt="menu"></button>
         <div v-if="profile_clicked == true" class="login">
             <span v-if="isAuthenticated">
-                <p>Welcome, {{ user.username }}</p>
-                <button @click="logout">Logout</button>
+                <NuxtLink :to="`/myprofile`" @click="to_profile()"><button>My Profile</button></NuxtLink>
+                <button>Favorites</button>
+                <button @click="logout">Log out</button>
             </span>
             <span v-else>
-                <NuxtLink to="/login"><button>LOGIN</button></NuxtLink>
+                <button @click="isClicked()">LOGIN</button>
                 <NuxtLink to="/registration"><button>REGISTER</button></NuxtLink>
             </span>
             

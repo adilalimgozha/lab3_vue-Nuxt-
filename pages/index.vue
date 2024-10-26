@@ -6,10 +6,16 @@ import DateComp from './components/DateComp.vue';
 import SecondFloor from './components/SecondFloor.vue';
 import Menu from './components/Menu.vue';
 import _ from 'lodash';
+import Login from '~/components/Login.vue';
+import { useUsersStore } from '~/store/users';
+
+const usersStore = useUsersStore();
 
 
 const persons = ref([
         { id: 1,
+        username: "Mark Twen",
+        password: "q",
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Mark Twen",
@@ -19,6 +25,9 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 2,
+            username: "Peter Parker",
+            password: "q",
+            password: "q",
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Peter Parker",
@@ -28,6 +37,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 3,
+            username: "Max Max",
+            password: "q",
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Max Max",
@@ -37,6 +48,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 4,
+            username: "Suna Suna",
+            password: "q",
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Suna Suna",
@@ -46,6 +59,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 5,
+            username: "Bror Bror",
+            password: "q",
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Bror Bror",
@@ -55,6 +70,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 6,
+            username: "Robert Robert",
+            password: "q",
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Robert Robert",
@@ -64,6 +81,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 7,
+            username: "Alish Alish",
+            password: "q",
         Age: 32,
         Location: "Almaty, KZ",
         PersonName: "Alish Alish",
@@ -73,6 +92,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 8,
+            username: "Annie Annie",
+            password: "q",
         Age: 34,
         Location: "Almaty, KZ",
         PersonName: "Annie Annie",
@@ -82,6 +103,8 @@ const persons = ref([
         Commentary: "Modern",
         Topic: "Modern" },
         { id: 9,
+            username: "Erke Erke",
+            password: "q",
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Erke Erke",
@@ -91,6 +114,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 10,
+            username: "Ali Ali",
+            password: "q",
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Ali Ali",
@@ -100,6 +125,8 @@ const persons = ref([
         Commentary: "Adventure",
         Topic: "Adventure" },
         { id: 11,
+            username: "Nurik Nurik",
+            password: "q",
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Nurik Nurik",
@@ -109,6 +136,8 @@ const persons = ref([
         Commentary: "Education",
         Topic: "Education" },
         { id: 12,
+            username: "Adil Adil",
+            password: "q",
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Adil Adil",
@@ -118,6 +147,8 @@ const persons = ref([
         Commentary: "Fasion",
         Topic: "Fashion" },
         { id: 13,
+            username: "Ulan Ulan",
+            password: "q",
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Ulan Ulan",
@@ -127,6 +158,8 @@ const persons = ref([
         Commentary: "Fashion",
         Topic: "Fashion" },
         { id: 14,
+            username: "Kirill Kirill",
+            password: "q",
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Kirill Kirill",
@@ -136,6 +169,8 @@ const persons = ref([
         Commentary: "Fashion",
         Topic: "Fashion" },
         { id: 15,
+            username: "Nikita Nikita",
+            password: "q",
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Nikita Nikita",
@@ -145,6 +180,8 @@ const persons = ref([
         Commentary: "Modern",
         Topic: "Modern" },
         { id: 16,
+            username: "Zhasik Zhasik",
+            password: "q",
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Zhasik Zhasik",
@@ -154,6 +191,8 @@ const persons = ref([
         Commentary: "Fashion",
         Topic: "Fashion" },
         { id: 17,
+            username: "Tima Tima",
+            password: "q",
             Age: 34,
             Location: "Almaty, KZ",
         PersonName: "Tima Tima",
@@ -163,6 +202,8 @@ const persons = ref([
         Commentary: "Modern",
         Topic: "Modern" },
         { id: 18,
+            username: "Saba Saba",
+            password: "q",
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Saba Saba",
@@ -172,6 +213,8 @@ const persons = ref([
         Commentary: "Education",
         Topic: "Education" },
         { id: 19,
+            username: "Damir Damir",
+            password: "q",
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Damir Damir",
@@ -181,6 +224,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 20,
+            username: "Dima Dima",
+            password: "q",
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Dima Dima",
@@ -190,6 +235,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 21,
+            username: "Alen Alen",
+            password: "q",
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Alen Alen",
@@ -199,6 +246,8 @@ const persons = ref([
         Commentary: "Nature",
         Topic: "Nature" },
         { id: 22,
+            username: "Madina Madina",
+            password: "q",
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Madina Madina",
@@ -208,6 +257,8 @@ const persons = ref([
         Commentary: "Education",
         Topic: "Education" },
         { id: 23,
+            username: "Alex Alex",
+            password: "q",
             Age: 25,
             Location: "Almaty, KZ",
         PersonName: "Alex Alex",
@@ -217,6 +268,8 @@ const persons = ref([
         Commentary: "Modern",
         Topic: "Modern" }
     ]);
+
+usersStore.addUsers(persons.value);
 
 // Нынешняя дата
 const today = ref(new Date());
@@ -345,6 +398,18 @@ function filterDecision(){
 const sortedByRating = computed(() => _.sortBy(perses.value, 'Rating').reverse())
 const sortedByDate = computed(() => _.sortBy(perses.value, 'PubDate').reverse())
 
+
+const isClicked = ref(false);
+const handleData = (clicked) => {
+  isClicked.value = clicked; // Устанавливаем состояние, полученное от дочернего компонента
+  console.log(isClicked.value)
+};
+
+const handleLoginSuccess = () => {
+    isClicked.value = !isClicked.value;
+    alert('Login was successful!');
+}
+
     
 </script>
 
@@ -363,7 +428,11 @@ const sortedByDate = computed(() => _.sortBy(perses.value, 'PubDate').reverse())
         :onlyEducation="onlyEducation"
         :menuBarClose="menuBarClose"></Menu>
         
-        <Header :menuBarOpen="menuBarOpen"></Header> 
+        <Header :menuBarOpen="menuBarOpen" :persons="persons" @isClicked="handleData"></Header> 
+
+        <div class="login" v-if="isClicked">
+            <Login :handleLoginSuccess="handleLoginSuccess" @loginSuccess="handleLoginSuccess"></Login>
+        </div>
 
         <div class="content">
             <DateComp :showDate="showDate"></DateComp>
@@ -378,6 +447,8 @@ const sortedByDate = computed(() => _.sortBy(perses.value, 'PubDate').reverse())
             :toDate="toDate"
             :filterDecision="filterDecision"
             :prevPage="prevPage"></SecondFloor>
+
+         
 
             <div v-if="page <= maxPage" class="grid-container">
                 <Person v-for="el in perses.slice((page-1) * 4, page * 4)" 
@@ -419,6 +490,10 @@ const sortedByDate = computed(() => _.sortBy(perses.value, 'PubDate').reverse())
         margin: 5em 7em;
         background: linear-gradient(180deg, rgba(254, 254, 254, 0.7) 0%, rgba(206, 210, 210, 0.7) 40%, rgba(193, 197, 197, 0.7) 62%, rgba(184, 187, 187, 0.7) 100%);
         border: 1px solid #63CFF1;
+    }
+
+    .login{
+        margin-left: 30em;
     }
 
 </style>

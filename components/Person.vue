@@ -35,16 +35,20 @@ const rate = ref(props.Rating)
 
 const postsString = JSON.stringify(props.posts);
 
+const isUserFollowing = ref(false)
+
 function to_details(userId) {
     router.push({
     path: `/profile/${userId}`,
     query: {
+        id: userId,
         PersonName: props.PersonName,
         Age: props.Age,
         Location: props.Location,
         Avatar: props.Avatar,
         Rating: rate.value,
         posts: postsString,
+        isUserFollowing: isUserFollowing.value
     }
   })
 }

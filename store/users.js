@@ -87,5 +87,10 @@ export const useUsersStore = defineStore('users', {
         }
       }
     },
+
+    addFollower(followedId) {
+      const followedUser = this.users.find(user => user.id == followedId)
+      followedUser.followedBy.push(this.user.username)
+    }
   }
 })

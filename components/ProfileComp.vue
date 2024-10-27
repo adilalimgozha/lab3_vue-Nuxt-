@@ -30,8 +30,11 @@
 
                     </div>
                 </div>
-
-                <button v-if="isMyProfile==false" class="follow-btn">Follow</button>
+                
+                <div v-if="isMyProfile==false">
+                    <button v-if="!IsUserFollowing" class="follow-btn" @click="handleFollowUser">Follow</button>
+                    <button v-else class="follow-btn" >Unfollow</button>
+                </div>
                 <div v-else>
                     <button class="follow-btn">Statistic</button>
                 </div>
@@ -99,6 +102,8 @@ import { ref } from 'vue';
 import { useUsersStore } from '~/store/users';
 
 const props = defineProps({
+    isUserFollowing: Boolean,
+    id: Number,
     isMyProfile: Boolean,
     PersonName: String,
     Age: Number,
@@ -117,10 +122,22 @@ const Location = ref(props.Location);
 const post_id = ref(props.post_id);
 
 
+const IsUserFollowing = ref(props.isUserFollowing);//DO IT THROUGH FAVORITES AND SUPPOSE TO WORK
 
+IsUserFollowing.value = (IsUserFollowing.value === false)
+
+console.log("Following?", IsUserFollowing.value)
 
 // Get the store
 const usersStore = useUsersStore();
+
+const userFollowedId = ref(props.id)
+
+const handleFollowUser = () => {
+    usersStore.addFollower(userFollowedId.value)
+    IsUserFollowing.value = !IsUserFollowing.value
+}
+console.log('User', usersStore.$state.user)
 
 
 // Method to handle form submission
@@ -132,7 +149,6 @@ const submitFormInfo = () => {
 
   console.log(usersStore.$state.users)
 };
-
 
 
 const page = ref(1)

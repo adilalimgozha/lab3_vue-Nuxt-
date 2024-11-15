@@ -91,6 +91,23 @@ export const useUsersStore = defineStore('users', {
     addFollower(followedId) {
       const followedUser = this.users.find(user => user.id == followedId)
       followedUser.followedBy.push(this.user.username)
-    }
+    },
+
+    addFollowing(followedId) {
+      const followedUser = this.users.find(user => user.id == followedId)
+      const folowingUser = this.users.find(user => user.username === this.user.username)
+      folowingUser.following.push(followedUser.username)
+    },
+
+    deleteFollower(followedId) {
+      const followedUser = this.users.find(user => user.id == followedId);
+      followedUser.followedBy = followedUser.followedBy.filter(username => username !== this.user.username);
+    },
+
+    deleteFollowing(followedId) {
+      const followedUser = this.users.find(user => user.id == followedId);
+      const followingUser = this.users.find(user => user.username === this.user.username);
+      followingUser.following = followingUser.following.filter(username => username !== followedUser.username);
+    },
   }
 })

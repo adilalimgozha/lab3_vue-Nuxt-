@@ -32,12 +32,16 @@
                 </div>
                 
                 <div v-if="isMyProfile==false">
-                    <button v-if="!IsUserFollowing" class="follow-btn" @click="handleFollowUser">Follow</button>
-                    <button v-else class="follow-btn" >Unfollow</button>
+                    <button v-if="followers.includes(user.username) == false" class="follow-btn" @click="handleFollowUser">Follow</button>
+
+                    <button v-else class="follow-btn" @click="handleUnfollowUser">Unfollow</button>
                 </div>
                 <div v-else>
-                    <button class="follow-btn">Statistic</button>
+                    <NuxtLink to="/statistics"> <button class="follow-btn">Statistic</button> </NuxtLink>
                 </div>
+                <br>
+                <br>
+                <NuxtLink to="/friends" @click="to_friends(props.id)"> <button class="follow-btn">Friends</button> </NuxtLink>
             </div>
 
             <div class="rating">
@@ -100,6 +104,9 @@
 import Person from './Person.vue';
 import { ref } from 'vue';
 import { useUsersStore } from '~/store/users';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const props = defineProps({
     isUserFollowing: Boolean,
@@ -121,6 +128,16 @@ const Age = ref(props.Age); // Reactive variable for Age
 const Location = ref(props.Location);
 const post_id = ref(props.post_id);
 
+function to_friends(userId) {
+    router.push({
+    path: `/friends`,
+    query: {
+        id: userId,
+        isMyProfile: isMyProfile.value
+    }
+  })
+}
+
 
 const IsUserFollowing = ref(props.isUserFollowing);//DO IT THROUGH FAVORITES AND SUPPOSE TO WORK
 
@@ -130,13 +147,34 @@ console.log("Following?", IsUserFollowing.value)
 
 // Get the store
 const usersStore = useUsersStore();
+const users = usersStore.$state.users
+const user = usersStore.$state.user
+
 
 const userFollowedId = ref(props.id)
 
-const handleFollowUser = () => {
-    usersStore.addFollower(userFollowedId.value)
-    IsUserFollowing.value = !IsUserFollowing.value
-}
+    const userOnPage = users.find(user => user.id == props.id)
+
+    console.log("user on page", userOnPage)
+
+    const followers = computed(() => {
+        if (isMyProfile.value == false){
+            return userOnPage.followedBy
+        }
+       
+    })
+
+    const handleFollowUser = () => {
+        usersStore.addFollower(userFollowedId.value)
+        usersStore.addFollowing(userFollowedId.value)
+    }
+
+    const handleUnfollowUser = () => {
+        usersStore.deleteFollower(userFollowedId.value)
+        usersStore.deleteFollowing(userFollowedId.value)
+    }
+
+
 console.log('User', usersStore.$state.user)
 
 
@@ -174,6 +212,7 @@ function prevPage(){
     }
     page.value--
 }
+
 </script>
 
 <style scoped>

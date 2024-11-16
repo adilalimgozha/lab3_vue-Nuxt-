@@ -1,13 +1,15 @@
 <template>
   <Header :menuBarOpen="menuBarOpen"></Header> 
+  <div class="all">
+    <div class="title">My Friends</div>
 
-  <div>My Friends</div>
-
-  <FriendComp v-if="userFull && userFull.following" 
-              v-for="friend in userFull.following"
-              :key="friend.id" 
-              :friend="friend">
-  </FriendComp>
+    <FriendComp v-if="userFull && userFull.following" 
+                v-for="friend in userFull.following"
+                :key="friend.id" 
+                :friend="friend"
+                :isMyProfile="isMyProfile">
+    </FriendComp>
+  </div>
 </template>
 
 <script setup>
@@ -46,5 +48,16 @@ console.error('User not found');
 </script>
 
 <style scoped>
+.title{
+  font-size: 3em;
+  color:#FBF3F3;
+  font-weight: bold;
+  margin-left: 17em;
+  padding-top: 1em;
+}
 
+.all{
+  background: linear-gradient(180deg, #76C5E7 0%, #FBF3F3 100%);
+  min-height: 38em;
+}
 </style>

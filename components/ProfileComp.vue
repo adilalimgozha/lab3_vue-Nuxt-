@@ -152,6 +152,7 @@ const user = usersStore.$state.user
 
 
 const userFollowedId = ref(props.id)
+console.log(userFollowedId.value, "idddd")
 
     const userOnPage = users.find(user => user.id == props.id)
 

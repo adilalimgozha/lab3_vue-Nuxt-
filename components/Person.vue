@@ -22,6 +22,21 @@ const props = defineProps({
     isMyProfile: Boolean
 })
 
+const usersStore = useUsersStore()
+const currentUser = computed(() => usersStore.getUser)
+const users = usersStore.$state.users
+const isAuthenticated = computed(() => usersStore.isUserAuthenticated)
+
+
+const currentUserFull = computed(() => {
+    if (isAuthenticated.value == false) {
+    return null
+    } else {
+    return users.find(user => user.username == currentUser.value.username);
+    }
+});
+console.log('current', currentUserFull.value)
+
 const posts_page = ref(props.posts_page)
 
 const postsStore = usePostsStore()
@@ -38,19 +53,28 @@ const postsString = JSON.stringify(props.posts);
 const isUserFollowing = ref(false)
 
 function to_details(userId) {
-    router.push({
-    path: `/profile/${userId}`,
-    query: {
-        id: userId,
-        PersonName: props.PersonName,
-        Age: props.Age,
-        Location: props.Location,
-        Avatar: props.Avatar,
-        Rating: rate.value,
-        posts: postsString,
-        isUserFollowing: isUserFollowing.value
-    }
-  })
+    if (currentUserFull.value.id == userId){
+        router.push({
+            path: `/myprofile`,
+            query: {
+            posts: postsString,
+            }
+        })
+    }else{
+        router.push({
+        path: `/profile/${userId}`,
+        query: {
+            id: userId,
+            PersonName: props.PersonName,
+            Age: props.Age,
+            Location: props.Location,
+            Avatar: props.Avatar,
+            Rating: rate.value,
+            posts: postsString,
+            isUserFollowing: isUserFollowing.value
+        }
+    })
+}
 }
 
 // Function to increase the rating

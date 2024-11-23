@@ -37,7 +37,7 @@
                     <button v-else class="follow-btn" @click="handleUnfollowUser">Unfollow</button>
                 </div>
                 <div v-else>
-                    <NuxtLink to="/statistics"> <button class="follow-btn">Statistic</button> </NuxtLink>
+                    <NuxtLink to="/statistics" @click="to_stat(props.id)"> <button class="follow-btn">Statistic</button> </NuxtLink>
                 </div>
                 <br>
                 <br>
@@ -137,6 +137,17 @@ function to_friends(userId) {
     }
   })
 }
+
+function to_stat(userId) {
+    router.push({
+    path: `/statistics`,
+    query: {
+        id: userId,
+        isMyProfile: isMyProfile.value
+    }
+  })
+}
+
 
 
 const IsUserFollowing = ref(props.isUserFollowing);//DO IT THROUGH FAVORITES AND SUPPOSE TO WORK

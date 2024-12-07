@@ -277,4 +277,137 @@ if (day === todayDay && month === todayMonth && year === todayYear) {
         background-color: rgb(148, 21, 21);
     }
 
+    @media (max-width: 600px) {
+        .card {
+            width: 90%;
+            margin: 1em auto;
+            font-size: 1.1em;
+        }
+
+        .card-top {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info {
+            width: 100%;
+            margin-top: 1em;
+        }
+
+        .rating {
+            margin-top: 1em;
+        }
+
+        .avatar {
+            width: 4em;
+        }
+
+        .name {
+            margin-bottom: 15%;
+            margin-top: 5%;
+        }
+
+        .date {
+            margin-bottom: 5%;
+        }
+
+        .like {
+            width: 8em;
+            font-size: 0.8em;
+        }
+
+        .btn {
+            text-align: center;
+        }
+
+        .star {
+            width: 1.5em;
+        }
+    }
+
+    /* Tablet (601px to 900px) */
+    @media (max-width: 900px) {
+        .card {
+            width: 80%;
+            margin: 2em auto;
+            font-size: 1.2em;
+        }
+
+        .card-top {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info {
+            width: 40%;
+        }
+
+        .rating {
+            margin-top: 1em;
+        }
+
+        .avatar {
+            width: 4.5em;
+        }
+
+        .name {
+            margin-bottom: 20%;
+        }
+
+        .like {
+            width: 8em;
+            font-size: 0.85em;
+        }
+
+        .btn {
+            text-align: center;
+        }
+
+        .star {
+            width: 1.5em;
+        }
+    }
+
+    /* Desktop (901px and above) */
+    @media (min-width: 901px) {
+        .card {
+            width: 70%;
+            margin: 2em 4.5em;
+            font-size: 1.3em;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info {
+            width: 30%;
+        }
+
+        .rating {
+            display: grid;
+            grid-template-columns: auto;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 5em;
+        }
+
+        .like {
+            width: 5em;
+            font-size: 0.9em;
+        }
+
+        .btn {
+            text-align: right;
+        }
+
+        .star {
+            margin: 0 0.3em;
+            width: 1.2em;
+        }
+    }
+
 </style>

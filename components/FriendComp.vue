@@ -95,4 +95,59 @@ function to_chat() {
         box-shadow: 0 5px #727272;
         transform: translateY(2px);
     }
+    
+    /* Mobile (up to 600px) */
+@media (max-width: 600px) {
+  .card {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+    font-size: 1.2em; /* Reduce font size for smaller screens */
+    margin: 1em;
+  }
+
+  .avatar {
+    height: 3em; /* Reduce avatar size on mobile */
+  }
+
+  .btn {
+    width: 5em; /* Smaller button size */
+    height: 2.5em;
+    font-size: 0.8em; /* Increase font size for better readability */
+    margin-left: 0; /* Center button on small screens */
+    margin-top: 1em; /* Add margin for spacing */
+  }
+}
+
+/* Tablet (601px to 900px) */
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+    font-size: 1.5em; /* Adjust font size for tablets */
+    margin: 1em;
+  }
+
+  .avatar {
+    height: 3.5em; /* Slightly smaller avatar */
+  }
+
+  .btn {
+    width: 5.5em; /* Adjust button width */
+    font-size: 0.7em; /* Adjust font size for tablets */
+  }
+}
+
+/* Desktop (901px and above) */
+@media (min-width: 901px) {
+  .card {
+    grid-template-columns: auto auto auto auto; /* 4 columns for desktop */
+    font-size: 2em; /* Keep original font size */
+  }
+
+  .avatar {
+    height: 4em; /* Keep original avatar size */
+  }
+
+  .btn {
+    width: 6em; /* Keep original button size */
+  }
+}
 </style>

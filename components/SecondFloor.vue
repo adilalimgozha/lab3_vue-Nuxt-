@@ -21,7 +21,7 @@ const props = defineProps({
 <template>
     <div class="second-fl">
         <div class="arrow">
-            <img @click="prevPage()" class="img arrow-img" src="/assets/arrow_back.png" alt="arrow">
+            <img @click="prevPage()" class="img arrow-img back" src="/assets/arrow_back.png" alt="arrow">
             <div class="number">{{page}}/{{maxPage}}</div>
         </div>
         <div class="blogName">
@@ -39,7 +39,7 @@ const props = defineProps({
             </div>
         </div>
         <div class="arrow">
-            <img @click="nextPage()" class="img arrow-img" src="/assets/arrow.png" alt="arrow">
+            <img @click="nextPage()" class="img arrow-img next" src="/assets/arrow.png" alt="arrow">
             <div class="number">{{page}}/{{maxPage}}</div>
         </div>
     </div>
@@ -140,4 +140,37 @@ const props = defineProps({
         font-weight: 100;
     }
 
+    @media (max-width: 600px) {
+    .grid-container1 {
+        width: 100%; /* Full width on mobile */
+        height: auto;
+    }
+
+    .second-fl {
+        flex-direction: column;
+        margin: 2em;
+    }
+
+    .blogName {
+        width: 100%; /* Full width on mobile */
+        font-size: 2em; /* Smaller text on smaller screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .grid-container1 {
+        width: 100%; /* Full width on mobile */
+        height: auto;
+    }
+
+    .second-fl {
+        flex-direction: column;
+        margin: 2em;
+    }
+
+    .blogName {
+        width: 100%; /* Full width on mobile */
+        font-size: 2em; /* Smaller text on smaller screens */
+    }
+}
 </style>

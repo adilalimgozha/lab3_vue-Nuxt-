@@ -343,4 +343,155 @@ function prevPage(){
     padding: 0.3em 0.3em;
 }
 
+@media (max-width: 600px) {
+        .grid-container {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+        .latest-posts {
+            font-size: 1.2em;
+            width: 90%;
+            margin-left: 0;
+            text-align: center;
+        }
+
+        .main-left {
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info,
+        .name {
+            font-size: 1.5em;
+        }
+
+        .title {
+            font-size: 2em;
+            margin-left: 0;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 10em;
+            height: 10em;
+        }
+
+        .follow-btn {
+            width: 8em;
+            font-size: 0.8em;
+        }
+
+        .main {
+            margin: 0 2em;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input {
+            width: 100%;
+            font-size: 0.8em;
+        }
+    }
+
+    /* Tablet (601px to 900px) */
+    @media (max-width: 900px) {
+        .grid-container {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+        }
+
+        .latest-posts {
+            font-size: 1.5em;
+            margin-left: 2em;
+            text-align: left;
+        }
+
+        .main-left {
+            width: 80%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info,
+        .name {
+            font-size: 1.7em;
+        }
+
+        .title {
+            font-size: 3em;
+            margin-left: 2em;
+        }
+
+        .avatar {
+            width: 12em;
+            height: 12em;
+        }
+
+        .follow-btn {
+            width: 9em;
+            font-size: 0.85em;
+        }
+
+        .main {
+            margin: 0 3em;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input {
+            width: 90%;
+            font-size: 0.9em;
+        }
+    }
+
+    /* Desktop (901px and above) */
+    @media (min-width: 901px) {
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto;
+        }
+
+        .latest-posts {
+            font-size: 2em;
+            margin-left: 4em;
+            text-align: left;
+        }
+
+        .main-left {
+            width: 40em;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info,
+        .name {
+            font-size: 2em;
+        }
+
+        .title {
+            font-size: 64px;
+            margin-left: 20em;
+        }
+
+        .avatar {
+            width: 15em;
+            height: 15em;
+        }
+
+        .follow-btn {
+            width: 10em;
+            font-size: 0.9em;
+        }
+
+        .main {
+            margin: 0 5em;
+        }
+
+        .input {
+            font-size: 0.6em;
+        }
+    }
+
 </style>

@@ -9,9 +9,17 @@ import _ from 'lodash';
 import Login from '~/components/Login.vue';
 import { useUsersStore } from '~/store/users';
 import { usePostsStore } from '~/store/posts';
+import FooterMobile from '~/components/FooterMobile.vue';
+import { onMounted } from 'vue';
 
 const usersStore = useUsersStore();
 const postsStore = usePostsStore()
+
+const isMobile = ref(false);
+
+const checkIfMobile = () => {
+  isMobile.value = window.innerWidth <= 900; // Adjust breakpoint as necessary
+};
 
 
 
@@ -579,6 +587,22 @@ const persons = ref([
         Rating: 6},
     ]);
 
+
+
+const userId = computed(() => {
+    const current = usersStore.$state.user
+    if (current){
+        return usersStore.getUserByPersonName(current.value.username)
+    }else{
+        return undefined
+    }
+    
+});
+
+
+
+
+
 if (usersStore.$state.users.length == 0){
     usersStore.addUsers(persons.value);
 }
@@ -732,12 +756,18 @@ const handleLoginSuccess = () => {
     alert('Login was successful!');
 }
 
-    
+
+
+onMounted(() => {
+  checkIfMobile();
+  window.addEventListener('resize', checkIfMobile);
+});
 </script>
 
 <template>
     <div class="all">
-        <Menu v-if="isMenuBarOpen == true" 
+
+        <Menu v-if="isMenuBarOpen == true && !isMobile"
         :toAdventure="toAdventure" 
         :toNature="toNature" 
         :toFashion="toFashion" 
@@ -750,7 +780,20 @@ const handleLoginSuccess = () => {
         :onlyEducation="onlyEducation"
         :menuBarClose="menuBarClose"></Menu>
         
-        <Header :menuBarOpen="menuBarOpen" :posts="posts" @isClicked="handleData"></Header> 
+        <MenuMobile v-if="isMenuBarOpen == true && isMobile"
+        :toAdventure="toAdventure" 
+        :toNature="toNature" 
+        :toFashion="toFashion" 
+        :toModern="toModern"
+        :toEducation="toEducation"
+        :onlyAdventure="onlyAdventure"
+        :onlyNature="onlyNature"
+        :onlyFashion="onlyFashion"
+        :onlyModern="onlyModern"
+        :onlyEducation="onlyEducation"
+        :menuBarClose="menuBarClose"></MenuMobile>
+        
+        <Header :isMobile="isMobile" :menuBarOpen="menuBarOpen" :posts="posts" @isClicked="handleData"></Header> 
 
         <div class="login" v-if="isClicked">
             <Login :handleLoginSuccess="handleLoginSuccess" @loginSuccess="handleLoginSuccess"></Login>
@@ -771,7 +814,6 @@ const handleLoginSuccess = () => {
             :prevPage="prevPage"></SecondFloor>
 
          
-
             <div v-if="page <= maxPage" class="grid-container">
                 <Person v-for="el in perses.slice((page-1) * 4, page * 4)" 
                     :key="el.id" 
@@ -794,6 +836,8 @@ const handleLoginSuccess = () => {
             </div>
         </div>
     </div>
+    <div class="footer_mob" v-if="isMobile && !current"><FooterMobile :menuBarOpen="menuBarOpen" ></FooterMobile></div>
+    <div class="footer_mob" v-else-if="isMobile && current"><FooterMobile :menuBarOpen="menuBarOpen" :id="userId.id" ></FooterMobile></div>
 </template>
 
 <style scoped>
@@ -818,5 +862,29 @@ const handleLoginSuccess = () => {
     .login{
         margin-left: 30em;
     }
+
+    .footer_mob{
+        position: sticky;
+        bottom: 0;
+    }
+
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  .login{
+        margin-left: 15em;
+    }
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin: 1em;
+    padding: 1em;
+  }
+  .login{
+        margin-left: 1em;
+    }
+}
 
 </style>

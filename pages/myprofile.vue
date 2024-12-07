@@ -1,7 +1,19 @@
 <template>
+        <MenuMobile v-if="isMenuBarOpen == true && isMobile"
+        :toAdventure="toAdventure" 
+        :toNature="toNature" 
+        :toFashion="toFashion" 
+        :toModern="toModern"
+        :toEducation="toEducation"
+        :onlyAdventure="onlyAdventure"
+        :onlyNature="onlyNature"
+        :onlyFashion="onlyFashion"
+        :onlyModern="onlyModern"
+        :onlyEducation="onlyEducation"
+        :menuBarClose="menuBarClose"></MenuMobile>
     <Header :menuBarOpen="menuBarOpen"></Header> 
     <ProfileComp :isMyProfile="isMyProfile" :PersonName="PersonName" :Age="Age" :Location="Location" :Avatar="Avatar" :Rating="Rating" :posts="posts"></ProfileComp>
-    
+    <div class="footer_mob" v-if="isMobile"><FooterMobile :menuBarOpen="menuBarOpen" ></FooterMobile></div>
     </template>
     
     <script setup>
@@ -11,6 +23,7 @@
     import Menu from '~/components/Menu.vue';
     import { computed } from 'vue';
     import { useUsersStore } from '~/store/users';
+    import FooterMobile from '~/components/FooterMobile.vue';
 
     const isMyProfile = ref(true)
 
@@ -48,8 +61,21 @@
         }
     }
     
+
+    const isMobile = ref(false);
+    const checkIfMobile = () => {
+        isMobile.value = window.innerWidth <= 900; // Adjust breakpoint as necessary
+    };
+    onMounted(() => {
+  checkIfMobile();
+  window.addEventListener('resize', checkIfMobile);
+});
+
     </script>
     
     <style scoped>
-    
+    .footer_mob{
+        position: sticky;
+        bottom: 0;
+    }
     </style>

@@ -23,4 +23,23 @@ const props = defineProps({
         color: white;
         border-radius: 8px;
     }
+    @media (max-width: 600px) {
+        div {
+            width: 80%; /* Increase width on smaller screens */
+            font-size: 2em; /* Reduce font size on mobile */
+        }
+    }
+
+    @media (max-width: 900px) {
+        div {
+            width: 80%; /* Increase width on smaller screens */
+            font-size: 2em; /* Reduce font size on mobile */
+        }
+    }
+    @media (min-width: 900px) {
+        div {
+            width: 80%; /* Increase width on smaller screens */
+            font-size: 2em; /* Reduce font size on mobile */
+        }
+    }
 </style>

@@ -137,5 +137,14 @@
         transform: translateY(2px);
 }
 
+@media (max-width: 768px) {
+  .all {
+    width: 100%;
+    padding: 1em;
+  }
+  .header {
+    font-size: 1.5em;
+  }
+}
 
 </style>

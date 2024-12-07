@@ -1,4 +1,5 @@
 <script setup>
+import MenuCardMobile from './MenuCardMobile.vue';
 
     const props = defineProps({
         menuBarClose: Function,
@@ -18,23 +19,14 @@
 
 <template>
 
-    <div class="menu-bar">
-        <button @click="menuBarClose()" class="button menu-btn">Menu</button>
+    <div class="menu">
         <div class="nav-contacts">
             <div class="nav">
-                <button @click="toAdventure(), menuBarClose(), onlyAdventure()" class="button adv-btn">Adventure Blog</button>
-                <button @click="toNature(), menuBarClose(), onlyNature()" class="button nat-btn">Nature Blog</button>
-                <button @click="toFashion(), menuBarClose(), onlyFashion()" class="button fas-btn">Fashion Blog</button>
-                <button @click="toModern(), menuBarClose(), onlyModern()" class="button mod-btn">Modern Blog</button>
-                <button @click="toEducation(), menuBarClose(), onlyEducation()" class="button edu-btn">Education Blog</button>
-            </div>
-            <div class="contacts">
-                <div class="contacts-word">Contacts</div>
-                <div class="contacts-all">
-                    <div class="phone">PHONE: +1(234)-23-45-22</div>
-                    <div class="adress">ADRESS: Green st. Yellow park</div>
-                    <div class="email">EMAIL: Yallow@park.info</div>
-                </div>
+                <button @click="toAdventure(), menuBarClose(), onlyAdventure()" class="button adv-btn"><MenuCardMobile :name="`Adventure Blog`"></MenuCardMobile></button>
+                <button @click="toNature(), menuBarClose(), onlyNature()" class="button nat-btn"><MenuCardMobile :name="`Nature Blog`"></MenuCardMobile></button>
+                <button @click="toFashion(), menuBarClose(), onlyFashion()" class="button fas-btn"><MenuCardMobile :name="`Fashion Blog`"></MenuCardMobile></button>
+                <button @click="toModern(), menuBarClose(), onlyModern()" class="button mod-btn"><MenuCardMobile :name="`Modern Blog`"></MenuCardMobile></button>
+                <button @click="toEducation(), menuBarClose(), onlyEducation()" class="button edu-btn"><MenuCardMobile :name="`Education Blog`"></MenuCardMobile></button>
             </div>
         </div>
     </div>
@@ -45,66 +37,63 @@
     .button{
         display: block;
         font-size: 2em;
+        margin: 1em;
+        width:7em;
+        height:7em;
     }
-
-    .menu-btn{
-        margin:1em;
-        background-color: white;
-        border: none;
-        color: #615C5C;
-        cursor: pointer;
-        border-radius: 10px;
-    }
-
-    .menu-btn:hover{
-        background-color: rgb(140, 139, 139);
-    }
-
+    
     .adv-btn{
-        background: linear-gradient(90deg, #4CD87C 0%, #42D669 63.42%, #3DD55E 100%);
+        background: #B0D17C;
+
         border: none;
         color: white;
         cursor: pointer;
     }
 
     .nat-btn{
-        background: linear-gradient(90deg, #5DDE6A 0%, #43D749 43.79%, #21CD1E 100%);
+        background: #B0D17C;
+
         border: none;
         color: white;
         cursor: pointer;
     }
 
     .fas-btn{
-        background: linear-gradient(90deg, #79DD56 0%, #48E521 100%);
+        background: #B0D17C;
+
         border: none;
         color: white;
         cursor: pointer;
     }
 
     .mod-btn{
-        background: linear-gradient(90deg, #67E674 0%, #7ECC86 100%);
+        background: #B0D17C;
+
         border: none;
         color: white;
         cursor: pointer;
     }
 
     .edu-btn{
-        background: linear-gradient(90deg, #53f263 0%, #6be477 100%);
+        background: #B0D17C;
+
         border: none;
         color: white;
         cursor: pointer;
     }
 
-    .menu-bar{
+    .menu{
         position: absolute;
         display: grid;
+        grid-template-columns: auto;
         background: #C1EBF1;
-        width: 20%;
+        width: 100%;
+        height: 50em
     }
 
     .nav{
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: auto auto;
         gap: 1em;
         margin-top: 1em;
         margin-bottom: 4em;

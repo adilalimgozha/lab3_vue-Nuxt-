@@ -244,4 +244,82 @@ const registerUser = async () => {
   color: white;
 }
 
+
+/* Mobile (up to 600px) */
+@media (max-width: 600px) {
+  .all {
+    padding: 2em;  /* Reduce padding for mobile */
+    font-size: 0.9em;  /* Adjust font size */
+  }
+
+  .reg-form {
+    flex-direction: column;  /* Stack form elements vertically on small screens */
+  }
+
+  .input {
+    width: 100%;  /* Full width input for mobile */
+    font-size: 1em;  /* Reduce input font size */
+    height: 2.5em;
+  }
+
+  .submit {
+    width: 100%;
+    margin-top: 2em;
+    margin-right: 0;  /* Center submit button */
+  }
+
+  .title {
+    font-size: 2em;  /* Reduce title size */
+    width: 100%;  /* Full width title */
+    margin-bottom: 1.5em;
+  }
+
+  .steps, .confirmation, .confirm-email, .phrase {
+    font-size: 1.2em;  /* Adjust text size */
+    margin-left: 0;
+    padding: 1em;  /* Reduce padding */
+  }
+
+  .submit2 {
+    width: 100%;  /* Full width submit button */
+    padding: 1.5em;  /* Adjust padding */
+  }
+}
+
+/* Tablet (600px to 900px) */
+@media (min-width: 600px) and (max-width: 900px) {
+  .all {
+    padding: 3em 5em;  /* Moderate padding for tablets */
+  }
+
+  .reg-form {
+    flex-direction: column;  /* Stack form elements vertically */
+    align-items: center;
+  }
+
+  .input {
+    width: 80%;  /* Adjust width for tablet */
+  }
+
+  .submit {
+    width: 80%;
+    margin-top: 3em;
+  }
+
+  .title {
+    font-size: 2.5em;  /* Slightly larger title */
+    width: 80%;
+    margin-bottom: 2em;
+  }
+
+  .steps, .confirmation {
+    font-size: 1.5em;
+  }
+
+  .submit2 {
+    width: 80%;
+  }
+}
+
+
 </style>

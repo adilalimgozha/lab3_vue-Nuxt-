@@ -159,4 +159,65 @@ const postsCountByMonth = computed(() => {
   text-align: center;
   margin-top: 10px;
 }
+
+/* Mobile (up to 600px) */
+@media (max-width: 600px) {
+  .statistics-container {
+    padding: 10px;
+  }
+
+  .filters {
+    flex-direction: column; /* Stack the filters vertically */
+    gap: 8px;
+  }
+
+  .chart-container {
+    height: 15em; /* Allow height to adjust dynamically */
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
+
+  .bar {
+    width: 100%; /* Allow bars to take full width on mobile */
+    margin-bottom: 10px; /* Add space between bars */
+  }
+
+  .month {
+    font-size: 10px; /* Reduce font size on mobile */
+  }
+}
+
+/* Tablet (601px to 900px) */
+@media (max-width: 900px) {
+  .statistics-container {
+    padding: 15px;
+  }
+
+  .chart-container {
+    gap: 8px;
+  }
+
+  .bar {
+    width: 35%; /* Reduce bar width for tablets */
+  }
+
+  .month {
+    font-size: 11px; /* Slightly smaller font size for tablets */
+  }
+}
+
+/* Desktop (901px and above) */
+@media (min-width: 901px) {
+  .statistics-container {
+    padding: 20px;
+  }
+
+  .chart-container {
+    gap: 10px;
+  }
+
+  .bar {
+    width: 50px; /* Maintain original width on desktop */
+  }
+}
 </style>
